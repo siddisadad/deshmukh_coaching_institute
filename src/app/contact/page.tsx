@@ -20,6 +20,7 @@ export default async function ContactPage({
         eyebrow="Get in touch"
         title="Visit Deshmukh Coaching Institute"
         description="Book a free counselling session and find the right course, batch, and preparation plan."
+        crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
       />
       <Contact defaultCourse={course ?? ""} />
     </main>

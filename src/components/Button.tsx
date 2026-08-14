@@ -12,19 +12,25 @@ const variants = {
   ghost: "bg-transparent text-navy hover:bg-surface",
 } as const;
 
+export type ButtonVariant = keyof typeof variants;
+
+export function buttonClasses(variant: ButtonVariant = "primary", className?: string) {
+  return cn(
+    "btn-shine inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold tracking-tight transition duration-200",
+    variants[variant],
+    className,
+  );
+}
+
 type ButtonProps = {
   href: string;
   children: React.ReactNode;
-  variant?: keyof typeof variants;
+  variant?: ButtonVariant;
   className?: string;
 };
 
 export function Button({ href, children, variant = "primary", className }: ButtonProps) {
-  const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold tracking-tight transition duration-200",
-    variants[variant],
-    className,
-  );
+  const classes = buttonClasses(variant, className);
 
   if (href.startsWith("http") || href.startsWith("tel:") || href.startsWith("mailto:")) {
     return (

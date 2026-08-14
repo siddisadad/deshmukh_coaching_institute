@@ -15,6 +15,7 @@ export default function EnrollPage() {
         eyebrow="Admissions"
         title="Enroll Now"
         description="Share your details and our counsellor will help you complete admission for the upcoming academic session."
+        crumbs={[{ label: "Home", href: "/" }, { label: "Enroll" }]}
       />
       <Contact />
     </main>

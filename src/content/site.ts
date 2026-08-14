@@ -85,9 +85,18 @@ export const hero = {
     "Deshmukh Coaching Institute provides expert guidance, structured learning, regular assessments, and personalized support to help students achieve their academic and competitive exam goals.",
   primaryCta: { label: "Explore Courses", href: "/courses" },
   secondaryCta: { label: "Book a Free Counselling Session", href: "/contact#enquiry" },
+  chips: [
+    "Structured learning plans",
+    "Weekly tests & analysis",
+    "Personal doubt support",
+  ],
   image: {
     src: "/images/hero/classroom.jpg",
     alt: "Teacher guiding students during a focused classroom session at a coaching institute",
+  },
+  secondaryImage: {
+    src: "/images/about/students.jpg",
+    alt: "Students collaborating during a guided study session",
   },
   stats: [
     { value: 1000, suffix: "+", label: "Students Guided" },
@@ -399,6 +408,7 @@ export const achievers = [
     achievement: "Board Examination",
     year: "2025",
     initials: "AD",
+    quote: "Regular tests showed me exactly what to revise next.",
   },
   {
     name: "Ananya Patil",
@@ -407,6 +417,7 @@ export const achievers = [
     achievement: "Science Stream",
     year: "2025",
     initials: "AP",
+    quote: "Doubt sessions made Science feel manageable again.",
   },
   {
     name: "Vihaan Joshi",
@@ -415,6 +426,7 @@ export const achievers = [
     achievement: "Board Examination",
     year: "2025",
     initials: "VJ",
+    quote: "The revision plan kept board preparation organised.",
   },
   {
     name: "Isha Kulkarni",
@@ -423,6 +435,7 @@ export const achievers = [
     achievement: "Commerce Stream",
     year: "2024",
     initials: "IK",
+    quote: "Teachers explained the method, not only the answer.",
   },
   {
     name: "Rohan Sharma",
@@ -431,6 +444,7 @@ export const achievers = [
     achievement: "State-level qualifier",
     year: "2025",
     initials: "RS",
+    quote: "Mock analysis improved both speed and accuracy.",
   },
   {
     name: "Meera Nair",
@@ -439,8 +453,58 @@ export const achievers = [
     achievement: "Annual Examination",
     year: "2025",
     initials: "MN",
+    quote: "Small batches meant I could ask every question.",
   },
 ] as const;
+
+export const announcements = [
+  "Admissions open for the upcoming academic session",
+  "Book a free counselling session to choose the right course",
+  "Regular tests with parent progress updates",
+  "Placeholder highlight: 95%+ sample success rate — replace with verified results",
+];
+
+export const admissionSteps = [
+  { n: "01", title: "Enquire", text: "Share class, goals, and preferred timing through the form, call, or WhatsApp." },
+  { n: "02", title: "Counselling", text: "Meet an academic counsellor and map the right course, batch, and study load." },
+  { n: "03", title: "Enrol", text: "Confirm start date, timetable, and the first-month learning plan." },
+  { n: "04", title: "Begin", text: "Attend orientation, receive material, and start concept classes with a clear target." },
+];
+
+export const parentPartnership = {
+  heading: "Built For Students. Trusted By Parents.",
+  text: "Parents stay informed without turning every test into conflict. We share attendance, performance, and the next academic focus in plain language.",
+  points: [
+    {
+      title: "Attendance visibility",
+      text: "Know whether the student is present and consistent through the week.",
+    },
+    {
+      title: "Test reports",
+      text: "See scores alongside the topics that need revision, not only a percentage.",
+    },
+    {
+      title: "Counsellor access",
+      text: "Speak with the team when batch, workload, or stream choices need a decision.",
+    },
+    {
+      title: "A clear next step",
+      text: "Every review ends with what to practise at home and what we will cover in class.",
+    },
+  ],
+};
+
+export const batchSchedule = {
+  heading: "Batch Timings",
+  note: "Placeholder timetable. Replace with your published hours, days, and centre-specific batches.",
+  rows: [
+    { course: "School Academic Coaching", days: "Mon – Sat", time: "4:30 PM – 6:30 PM" },
+    { course: "SSC / Board Preparation", days: "Mon – Sat", time: "6:45 PM – 8:45 PM" },
+    { course: "Foundation Program", days: "Tue, Thu, Sat", time: "5:00 PM – 7:00 PM" },
+    { course: "Competitive Exam Preparation", days: "Mon – Fri", time: "7:00 AM – 9:00 AM" },
+    { course: "Entrance Exam Preparation", days: "Weekend + selected weekdays", time: "As per counselling" },
+  ],
+};
 
 export const faculty = [
   {

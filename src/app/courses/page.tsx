@@ -17,6 +17,7 @@ export default function CoursesPage() {
         eyebrow="Programmes"
         title="Courses Designed For Your Success"
         description="Explore structured programmes for school academics, board examinations, foundation building, and competitive preparation."
+        crumbs={[{ label: "Home", href: "/" }, { label: "Courses" }]}
       />
       <Courses />
       <Subjects />

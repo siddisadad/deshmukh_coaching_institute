@@ -16,6 +16,7 @@ export default function FacilitiesPage() {
         eyebrow="Campus"
         title="A Better Environment for Better Learning"
         description="Spaces designed for concentration, doubt-solving, and regular assessment."
+        crumbs={[{ label: "Home", href: "/" }, { label: "Facilities" }]}
       />
       <Facilities />
       <CounsellingCta />

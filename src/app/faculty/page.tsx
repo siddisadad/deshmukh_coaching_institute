@@ -16,6 +16,7 @@ export default function FacultyPage() {
         eyebrow="Teachers"
         title="Meet Our Expert Faculty"
         description="Experienced educators focused on conceptual clarity, exam technique, and personal attention."
+        crumbs={[{ label: "Home", href: "/" }, { label: "Faculty" }]}
       />
       <Faculty />
       <CounsellingCta />

@@ -1,4 +1,4 @@
-import { site } from "@/content/site";
+import { courses, faqs, site } from "@/content/site";
 
 export function JsonLd() {
   const data = {
@@ -26,6 +26,17 @@ export function JsonLd() {
         openingHours: "Mo-Sa 08:00-20:00",
         areaServed: "IN",
         sameAs: [site.social.facebook, site.social.instagram, site.social.youtube],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Coaching programmes",
+          itemListElement: courses.map((course) => ({
+            "@type": "Course",
+            name: course.name,
+            description: course.summary,
+            provider: { "@id": `${site.url}/#institute` },
+            url: `${site.url}/courses/${course.slug}`,
+          })),
+        },
       },
       {
         "@type": "WebSite",
@@ -34,6 +45,14 @@ export function JsonLd() {
         name: site.name,
         publisher: { "@id": `${site.url}/#institute` },
         inLanguage: "en-IN",
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faqs.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
       },
     ],
   };

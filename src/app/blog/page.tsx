@@ -15,6 +15,7 @@ export default function BlogPage() {
         eyebrow="Resources"
         title="Latest Updates & Study Resources"
         description="Practical guidance for school, board, and competitive exam preparation."
+        crumbs={[{ label: "Home", href: "/" }, { label: "Resources" }]}
       />
       <Blog />
     </main>

@@ -4,7 +4,7 @@ import { telLink, whatsappLink } from "@/lib/utils";
 
 export function FloatingCta() {
   return (
-    <div className="fixed bottom-5 right-4 z-40 flex flex-col gap-3">
+    <div className="fixed bottom-5 right-4 z-40 hidden flex-col gap-3 md:flex">
       <a
         href={whatsappLink(site.contact.whatsapp, site.whatsappMessage)}
         className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5"

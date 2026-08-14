@@ -1,18 +1,26 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, Phone, X } from "lucide-react";
+import { EnquireButton } from "@/components/EnquireButton";
 import { Logo } from "@/components/Logo";
 import { navigation, site } from "@/content/site";
 import { cn, telLink } from "@/lib/utils";
 
 export function Header() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      setScrolled(window.scrollY > 12);
+      setProgress(height > 0 ? Math.min((window.scrollY / height) * 100, 100) : 0);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -34,7 +42,12 @@ export function Header() {
           : "border-transparent bg-white",
       )}
     >
-      <div className="hidden border-b border-line/70 bg-navy text-white lg:block">
+      <div
+        className={cn(
+          "hidden overflow-hidden border-b border-line/70 bg-navy text-white transition-all lg:block",
+          scrolled ? "max-h-0 border-transparent py-0" : "max-h-12",
+        )}
+      >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-xs sm:px-6 lg:px-8">
           <p className="font-medium tracking-wide text-white/80">
             {site.tagline} · Admissions open for the upcoming academic session
@@ -55,15 +68,21 @@ export function Header() {
         <Logo />
 
         <nav className="hidden items-center gap-1 xl:flex" aria-label="Primary">
-          {navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-full px-3 py-2 text-sm font-semibold text-navy/80 transition hover:bg-surface hover:text-royal"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navigation.map((item) => {
+            const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "rounded-full px-3 py-2 text-sm font-semibold transition",
+                  active ? "bg-surface text-royal" : "text-navy/80 hover:bg-surface hover:text-royal",
+                )}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -74,12 +93,7 @@ export function Header() {
           >
             <Phone className="h-4 w-4" />
           </a>
-          <Link
-            href="/enroll"
-            className="hidden rounded-full bg-accent px-5 py-2.5 text-sm font-bold text-navy shadow-[0_10px_24px_-12px_rgba(255,138,21,0.9)] transition hover:-translate-y-0.5 hover:bg-gold sm:inline-flex"
-          >
-            Enroll Now
-          </Link>
+          <EnquireButton className="hidden sm:inline-flex">Enroll Now</EnquireButton>
           <button
             type="button"
             className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-navy text-white xl:hidden"
@@ -91,6 +105,10 @@ export function Header() {
             <span className="sr-only">Toggle menu</span>
           </button>
         </div>
+      </div>
+
+      <div className="h-0.5 bg-surface">
+        <div className="h-full bg-gradient-to-r from-royal via-accent to-gold" style={{ width: `${progress}%` }} />
       </div>
 
       <div
@@ -138,13 +156,9 @@ export function Header() {
               </Link>
             ))}
           </nav>
-          <Link
-            href="/enroll"
-            onClick={() => setOpen(false)}
-            className="mt-6 rounded-full bg-accent px-5 py-3 text-center text-sm font-bold text-navy"
-          >
+          <EnquireButton className="mt-6 w-full" >
             Enroll Now
-          </Link>
+          </EnquireButton>
         </div>
       </div>
     </header>

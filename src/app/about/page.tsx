@@ -17,6 +17,7 @@ export default function AboutPage() {
         eyebrow="Our story"
         title={about.heading}
         description="A coaching institute built around expert teaching, disciplined study habits, and the belief that the right guidance changes outcomes."
+        crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
       />
       <About showCta={false} />
       <WhyChooseUs />

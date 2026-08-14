@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { EnquireButton } from "@/components/EnquireButton";
 import { Button } from "@/components/Button";
 import { Contact } from "@/components/Contact";
 import { PageHero } from "@/components/PageHero";
@@ -29,7 +30,16 @@ export default async function CourseDetailPage({ params }: Props) {
 
   return (
     <main id="main">
-      <PageHero eyebrow={course.category} title={course.name} description={course.summary} />
+      <PageHero
+        eyebrow={course.category}
+        title={course.name}
+        description={course.summary}
+        crumbs={[
+          { label: "Home", href: "/" },
+          { label: "Courses", href: "/courses" },
+          { label: course.name },
+        ]}
+      />
       <section className="bg-white py-16">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-7">
@@ -75,9 +85,9 @@ export default async function CourseDetailPage({ params }: Props) {
                 ))}
               </ul>
               <div className="mt-6 flex flex-col gap-3">
-                <Button href={`/contact?course=${course.slug}#enquiry`} variant="dark">
+                <EnquireButton course={course.slug} variant="dark">
                   Enquire Now
-                </Button>
+                </EnquireButton>
                 <Button href="/enroll">Apply Now</Button>
               </div>
             </div>

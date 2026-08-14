@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { Reveal } from "@/components/Reveal";
+import { FacilityGallery } from "@/components/FacilityGallery";
 import { SectionHeading } from "@/components/SectionHeading";
 import { facilities } from "@/content/site";
 
@@ -12,26 +11,7 @@ export function Facilities() {
           title={facilities.heading}
           description="Replace these photographs with images of your actual classrooms, labs, and study spaces."
         />
-
-        <div className="masonry mt-12">
-          {facilities.gallery.map((item, index) => (
-            <Reveal key={item.src} className="masonry-item" delay={index * 40}>
-              <figure className="overflow-hidden rounded-3xl bg-surface shadow-soft">
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  width={900}
-                  height={index % 3 === 0 ? 1100 : 720}
-                  className="h-auto w-full object-cover"
-                />
-                <figcaption className="px-4 py-3 text-sm font-semibold text-navy">
-                  {item.label}
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
-
+        <FacilityGallery />
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {facilities.cards.map((card) => (
             <article key={card.title} className="rounded-3xl bg-surface p-5 ring-1 ring-line">

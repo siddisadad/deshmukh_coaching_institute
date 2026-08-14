@@ -17,6 +17,7 @@ export default function ResultsPage() {
         eyebrow="Outcomes"
         title="Results That Inspire Confidence"
         description="A results-first culture with regular testing and documented improvement. Replace sample highlights with verified student outcomes."
+        crumbs={[{ label: "Home", href: "/" }, { label: "Results" }]}
       />
       <Results />
       <Achievers />

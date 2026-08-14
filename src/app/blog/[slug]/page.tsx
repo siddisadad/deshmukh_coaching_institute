@@ -28,7 +28,16 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <main id="main">
-      <PageHero eyebrow={post.category} title={post.title} description={post.description} />
+      <PageHero
+        eyebrow={post.category}
+        title={post.title}
+        description={post.description}
+        crumbs={[
+          { label: "Home", href: "/" },
+          { label: "Resources", href: "/blog" },
+          { label: post.category },
+        ]}
+      />
       <article className="bg-white py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <p className="text-sm font-semibold text-muted">{post.date} · {site.name}</p>

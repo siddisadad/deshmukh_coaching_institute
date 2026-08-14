@@ -18,19 +18,22 @@ export function Achievers() {
         <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {achievers.map((student, index) => (
             <Reveal key={student.name} delay={index * 60}>
-              <article className="flex items-center gap-4 rounded-[1.6rem] bg-surface p-5 ring-1 ring-line">
-                <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-navy to-royal text-lg font-black text-gold">
-                  {student.initials}
+              <article className="relative overflow-hidden rounded-[1.6rem] bg-surface p-6 ring-1 ring-line">
+                <span className="absolute right-4 top-4 rounded-full bg-gold/20 px-3 py-1 text-xs font-bold text-navy">
+                  {student.year}
+                </span>
+                <div className="flex items-center gap-4">
+                  <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-navy to-royal text-lg font-black text-gold">
+                    {student.initials}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-extrabold text-navy">{student.name}</h3>
+                    <p className="text-sm text-muted">{student.exam}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-lg font-extrabold text-navy">{student.name}</h3>
-                  <p className="text-sm text-muted">
-                    {student.exam} · {student.year}
-                  </p>
-                  <p className="mt-1 text-sm font-bold text-royal">
-                    {student.score} · {student.achievement}
-                  </p>
-                </div>
+                <p className="mt-4 font-display text-3xl font-semibold text-royal">{student.score}</p>
+                <p className="mt-1 text-sm font-bold text-navy">{student.achievement}</p>
+                <p className="mt-3 text-sm leading-6 text-muted">“{student.quote}”</p>
               </article>
             </Reveal>
           ))}

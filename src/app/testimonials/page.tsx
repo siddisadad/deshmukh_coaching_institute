@@ -16,6 +16,7 @@ export default function TestimonialsPage() {
         eyebrow="Voices"
         title="What Students & Parents Say"
         description="Honest conversations about teaching quality, tests, and support. Replace these samples with permissioned quotes."
+        crumbs={[{ label: "Home", href: "/" }, { label: "Testimonials" }]}
       />
       <Testimonials />
       <CounsellingCta />
