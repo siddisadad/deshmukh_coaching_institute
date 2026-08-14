@@ -1,6 +1,6 @@
 import { site } from "@/content/site";
 
-export default function JsonLd() {
+export function JsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@graph": [
