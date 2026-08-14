@@ -30,6 +30,7 @@
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
   --font-sans: var(--font-jakarta);
+  --font-display: var(--font-fraunces);
   --shadow-card: 0 18px 40px -24px rgb(8 20 40 / 0.35);
   --shadow-soft: 0 10px 30px -18px rgb(8 20 40 / 0.25);
 }
@@ -47,6 +48,11 @@ body {
 ::selection {
   background: color-mix(in srgb, var(--accent) 30%, white);
   color: var(--navy);
+}
+
+:focus-visible {
+  outline: 2px solid var(--royal);
+  outline-offset: 3px;
 }
 
 .skip-link {
@@ -73,8 +79,9 @@ body {
 
 .hero-glow {
   background:
-    radial-gradient(circle at 12% 20%, rgb(29 78 216 / 0.35), transparent 28%),
-    radial-gradient(circle at 88% 10%, rgb(255 138 21 / 0.22), transparent 26%),
+    radial-gradient(circle at 12% 20%, rgb(29 78 216 / 0.38), transparent 28%),
+    radial-gradient(circle at 88% 10%, rgb(255 138 21 / 0.24), transparent 26%),
+    radial-gradient(circle at 70% 80%, rgb(245 197 24 / 0.12), transparent 30%),
     linear-gradient(160deg, #071326 0%, #0c2248 48%, #102a5c 100%);
 }
 
@@ -115,8 +122,48 @@ body {
   }
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shine {
+  to {
+    transform: translateX(220%);
+  }
+}
+
 .float-card {
   animation: rise 0.8s ease both;
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(120deg, transparent, rgb(255 255 255 / 0.35), transparent);
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+
+.btn-shine:hover::after {
+  animation: shine 0.7s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -125,7 +172,9 @@ body {
   }
 
   .float-card,
-  .reveal-motion {
+  .reveal-motion,
+  .marquee-track,
+  .btn-shine::after {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;
